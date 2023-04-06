@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TodoApp.Models;
+using TodoApp.Repos;
 
 namespace TodoApp
 {
@@ -20,9 +22,15 @@ namespace TodoApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Todo> todos;
+        TodoRepo todoRepo = new TodoRepo();
+
         public MainWindow()
         {
             InitializeComponent();
+            todos = todoRepo.GetAll();
+            lbTodos.ItemsSource = todos;
+            
         }
     }
 }
