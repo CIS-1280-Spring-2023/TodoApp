@@ -30,7 +30,7 @@ namespace TodoApp
             InitializeComponent();
             todos = todoRepo.GetAll();
             lbTodos.ItemsSource = todos;
-            
+
         }
 
         private void btnAddTodo_Click(object sender, RoutedEventArgs e)
@@ -41,9 +41,24 @@ namespace TodoApp
             todo.IsComplete = false;
             //Pass todo to repo
             todoRepo.Add(todo);
-            //Refresh list box
+
+            RefreshTodoListBox();
+        }
+        private void btnDeleteTodo_Click(object sender, RoutedEventArgs e)
+        {
+            //Get selected item
+            Todo todo = (Todo)lbTodos.SelectedItem;
+
+            //Delete it from database
+            todoRepo.Delete(todo.Id);
+            RefreshTodoListBox();
+        }
+
+        private void RefreshTodoListBox()
+        {
             todos = todoRepo.GetAll();
             lbTodos.ItemsSource = todos;
         }
+
     }
 }

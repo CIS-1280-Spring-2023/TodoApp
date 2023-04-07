@@ -45,5 +45,16 @@ namespace TodoApp.Repos
                 cmd.ExecuteNonQuery();               
             }
         }
+
+        public void Delete(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            {
+                SqlCommand cmd = new SqlCommand(@"DELETE FROM Todo WHERE Id = @id;", connection);
+                cmd.Parameters.AddWithValue("Id", id);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
