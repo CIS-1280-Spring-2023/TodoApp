@@ -32,5 +32,16 @@ namespace TodoApp
             lbTodos.ItemsSource = todos;
             
         }
+
+        private void btnAddTodo_Click(object sender, RoutedEventArgs e)
+        {
+            Todo todo = new Todo();
+            todo.Description = txbTodo.Text;
+            todo.IsComplete = false;
+            todoRepo.Add(todo);
+            //Refresh list box
+            todos = todoRepo.GetAll();
+            lbTodos.ItemsSource = todos;
+        }
     }
 }

@@ -30,5 +30,20 @@ namespace TodoApp.Repos
             }
             return Todos;       
         }
+
+        public void Add(Todo todo)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            {
+                SqlCommand cmd = new SqlCommand(@"
+                    INSERT INTO Todo (Description, IsComplete)
+                    VALUES (@Description,@IsComplete);
+                ", connection);
+                cmd.Parameters.AddWithValue("Description", todo.Description);
+                cmd.Parameters.AddWithValue("IsComplete", todo.IsComplete);
+                connection.Open();
+                cmd.ExecuteNonQuery();               
+            }
+        }
     }
 }
