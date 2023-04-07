@@ -60,5 +60,20 @@ namespace TodoApp
             lbTodos.ItemsSource = todos;
         }
 
+        private void lbTodos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //Find the selected item
+            Todo todo = (Todo)lbTodos.SelectedItem;
+
+            //Open a form to edit it.
+            TodoEditWindow editWindow = new TodoEditWindow(todo);
+            if(editWindow.ShowDialog()==true)
+            {
+                todo = editWindow.Todo;
+                todoRepo.Update(todo);
+            }
+
+            RefreshTodoListBox();
+        }
     }
 }

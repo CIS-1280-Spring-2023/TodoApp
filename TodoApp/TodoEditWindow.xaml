@@ -1,0 +1,16 @@
+﻿<Window x:Class="TodoApp.TodoEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoApp"
+        mc:Ignorable="d"
+        Title="TodoEditWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txbDescription" HorizontalAlignment="Left" Margin="180,144,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <CheckBox x:Name="cbxIsComplete" Content="Is complete" HorizontalAlignment="Left" Margin="180,194,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="179,262,0,0" VerticalAlignment="Top" Click="btnSubmit_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="250,262,0,0" VerticalAlignment="Top" Click="btnCancel_Click"/>
+
+    </Grid>
+</Window>

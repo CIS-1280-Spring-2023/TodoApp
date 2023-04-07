@@ -56,5 +56,22 @@ namespace TodoApp.Repos
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void Update(Todo todo)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            {
+                SqlCommand cmd = new SqlCommand(@"
+                    UPDATE Todo
+                    SET Description = @Description, IsComplete = @IsComplete
+                    WHERE Id = @Id;
+                ", connection);
+                cmd.Parameters.AddWithValue("Description", todo.Description);
+                cmd.Parameters.AddWithValue("IsComplete", todo.IsComplete);
+                cmd.Parameters.AddWithValue("Id", todo.Id);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
