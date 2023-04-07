@@ -35,9 +35,11 @@ namespace TodoApp
 
         private void btnAddTodo_Click(object sender, RoutedEventArgs e)
         {
+            //Get todo from controls on form
             Todo todo = new Todo();
             todo.Description = txbTodo.Text;
             todo.IsComplete = false;
+            //Pass todo to repo
             todoRepo.Add(todo);
             //Refresh list box
             todos = todoRepo.GetAll();
